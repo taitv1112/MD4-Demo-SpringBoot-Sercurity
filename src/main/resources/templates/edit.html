@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <h2>Add New</h2>
+    <form method="post" th:object="${user}" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="code">UserName</label>
+            <input type="text" class="form-control" th:field="*{user_name} "id="code" placeholder="Employee Code" >
+        </div>
+        <div class="form-group">
+            <label for="name">Password</label>
+            <input type="password" class="form-control"th:field="*{password} " id="name" placeholder="Enter name" >
+        </div>
+        <div class="form-group">
+            <label for="full_name">Full_name</label>
+            <input type="text" class="form-control"th:field="*{full_name} " id="full_name" placeholder="Enter age" >
+        </div>
+        <div class="form-group">
+            <label for="salary">phone</label>
+            <input type="text" class="form-control"th:field="*{phone} " id="salary" placeholder="Enter salary" >
+        </div>
+        <div class="form-group">
+            <label for="email">email</label>
+            <input type="text" class="form-control"th:field="*{email} " id="email" placeholder="Enter salary" >
+
+        </div>
+        <div class="form-group">
+            <img th:src="${user.avatar}" height="150" width="200">
+            <input type="hidden" class="form-control"th:field="*{avatar}" hidden >
+        </div>
+        <div class="form-group">
+            <label for="avatar">avatar</label>
+            <input type="file" class="form-control" name="upImg" id="avatar" placeholder="Enter salary" >
+        </div>
+        <div class="form-group">
+            <select th:field="*{role}" >
+                <option th:each="c: ${roles}" th:text="${c.codeRole}" th:value="${c.id}"></option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+</div>
+
+</body>
+</html>
